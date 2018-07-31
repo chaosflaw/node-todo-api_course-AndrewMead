@@ -125,7 +125,7 @@ app.get('/users/me', authenticate, (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Server up on port ${port}.`);
+    console.log(`Server running and listening on port ${port}.`);
 });
 
 module.exports = {app};
