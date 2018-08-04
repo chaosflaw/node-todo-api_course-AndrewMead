@@ -13,7 +13,7 @@ const usersSeed = [{
     password: 'passwordOne',
     tokens: [{
         access: 'auth',
-        token: jwt.sign({_id: userOneId, access: 'auth'}, 'Lilith').toString()
+        token: jwt.sign({_id: userOneId, access: 'auth'}, process.env.JWT_SECRET).toString()
     }]
 }, {
     _id: userTwoId,
@@ -21,7 +21,7 @@ const usersSeed = [{
     password: 'passwordTwo',
     tokens: [{
         access: 'auth',
-        token: jwt.sign({_id: userTwoId, access: 'auth'}, 'Lilith').toString()
+        token: jwt.sign({_id: userTwoId, access: 'auth'}, process.env.JWT_SECRET).toString()
     }]
 }];
 

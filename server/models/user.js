@@ -48,7 +48,7 @@ UserSchema.methods.generateAuthToken = function () {
     var token = jwt.sign({
         _id: user._id.toHexString(), 
         access
-    }, 'Lilith').toString();
+    }, process.env.JWT_SECRET).toString();
 
     user.tokens = user.tokens.concat([{access, token}]);
 
@@ -71,7 +71,7 @@ UserSchema.statics.findByToken = function (token) {
     var decoded;
 
     try {
-        decoded = jwt.verify(token, 'Lilith');
+        decoded = jwt.verify(token, process.env.JWT_SECRET);
     } catch (e) {
         return Promise.reject();
     }
