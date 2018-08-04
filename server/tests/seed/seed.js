@@ -18,21 +18,28 @@ const usersSeed = [{
 }, {
     _id: userTwoId,
     email: 'userTwo@test.com',
-    password: 'passwordTwo'
+    password: 'passwordTwo',
+    tokens: [{
+        access: 'auth',
+        token: jwt.sign({_id: userTwoId, access: 'auth'}, 'Lilith').toString()
+    }]
 }];
 
 
 const todosSeed = [{
     _id: new ObjectID(),
-    text: 'Test todo 1'
+    text: 'Test todo 1',
+    _creator: userOneId
 }, {
     _id: new ObjectID(),
-    text: 'Test todo 2'
+    text: 'Test todo 2',
+    _creator: userTwoId
 }, {
     _id: new ObjectID(),
     text: 'Test todo 3',
     completed: 'true',
-    completedAt: 13287651
+    completedAt: 13287651,
+    _creator: userTwoId
 }];
 
 const populateTodos = (done) => {
